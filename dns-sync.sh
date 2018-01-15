@@ -13,7 +13,7 @@ new_domain_list=$(echo $domain_list |sha1sum)
 
     if [ "$current_domain_list" != "$new_domain_list" ]
         then
-        	echo "Jest nowa lista domen."
+        	echo "There is a new list of domains."
         	echo $domain_list > /tmp/domain_list
         	cp /dev/null /etc/named/slave-zones
 
@@ -22,9 +22,10 @@ new_domain_list=$(echo $domain_list |sha1sum)
 
                 echo "zone \"$domain\" IN { type slave; file \"slaves/$domain\"; masters { 192.168.1.253; }; }; " >> /etc/named/slave-zones
             done
-                echo "Wykonuje restart serwera DNS"
+                echo "I am restarting the dns server."
                 systemctl restart named
 
         else
-            echo "Konfiguracja identyczna. Nie mam nic do roboty"
+            echo "Lista domen się nie zmieniła. Nie mam nic do roboty"
+            
     fi
