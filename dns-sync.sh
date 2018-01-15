@@ -26,6 +26,6 @@ new_domain_list=$(echo $domain_list |sha1sum)
                 systemctl restart named
 
         else
-            echo "Lista domen się nie zmieniła. Nie mam nic do roboty"
+            echo "The list of domains has not changed."
             
     fi
