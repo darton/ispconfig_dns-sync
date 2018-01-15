@@ -10,7 +10,7 @@ domain_list=`ssh $sshurl "$dsource |sed -e 's/\.$//'"`
 
 named_conf_dir=/etc/named
 
-slave_zones_file=$master_dns-slave-zones
+slave_zones_file=$shadow_master_dns-slave-zones
 
 touch /tmp/domain_list
 
