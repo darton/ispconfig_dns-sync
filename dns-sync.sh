@@ -1,8 +1,8 @@
 #!/bin/bash
 
-master_dns=192.168.1.253
+shadow_master_dns=192.168.1.253
 
-sshurl=slavens@$master_dns
+sshurl=slavens@$shadow_master_dns
 
 dsource="mysql -s -u slavens dbispconfig -e \"select origin from dns_soa;\""
 
@@ -28,7 +28,7 @@ new_domain_list=$(echo $domain_list |sha1sum)
             for domain in $domain_list
             do
 
-                echo "zone \"$domain\" IN { type slave; file \"slaves/$domain\"; masters { $master_dns; }; }; " >> $named_conf_dir/$slave_zones_file
+                echo "zone \"$domain\" IN { type slave; file \"slaves/$domain\"; masters { $shadow_master_dns; }; }; " >> $named_conf_dir/$slave_zones_file
             done
                 echo "I am restarting the dns server."
                 systemctl restart named
