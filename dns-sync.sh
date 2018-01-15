@@ -2,7 +2,7 @@
 
 master_dns=192.168.1.253
 
-sshurl=slavens@ispconfig.example.com
+sshurl=slavens@$master_dns
 
 dsource="mysql -s -u slavens dbispconfig -e \"select origin from dns_soa;\""
 
