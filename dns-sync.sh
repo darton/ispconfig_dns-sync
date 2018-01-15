@@ -12,6 +12,8 @@ named_conf_dir=/etc/named
 
 slave_zones_file=$master_dns-slave-zones
 
+touch /tmp/domain_list
+
 
 current_domain_list=$(cat /tmp/domain_list |sha1sum)
 new_domain_list=$(echo $domain_list |sha1sum)
