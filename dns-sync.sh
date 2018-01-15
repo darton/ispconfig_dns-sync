@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#get source code from https://github.com/darton/ispconfig_dns-sync.git
+#
+#git clone https://github.com/darton/ispconfig_dns-sync.git
+
 shadow_master_dns=192.168.1.253
 
 sshurl=slavens@$shadow_master_dns
