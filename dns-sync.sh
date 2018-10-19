@@ -19,7 +19,7 @@ sshurl=slavens@$shadow_master_dns
 
 dsource="mysql -s -u slavens dbispconfig -e\" SELECT origin FROM dns_soa WHERE active='Y' AND xfer LIKE '%$nsip%';\""
 
-domain_list=`ssh $sshurl "$dsource |sed -e 's/\.$//'"`
+domain_list=$(ssh $sshurl "$dsource |sed -e 's/\.$//'")
 
 named_conf_dir=/etc/named
 
