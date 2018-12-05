@@ -12,7 +12,7 @@
 #  GNU General Public License for more details.
 
 this_nsip="192.168.1.1"
-shadow_master_dns=192.168.1.253
+shadow_master_dns="192.168.1.253"
 master_dns="$shadow_master_dns; 10.10.10.1;"
 sshurl=slavens@$shadow_master_dns
 
