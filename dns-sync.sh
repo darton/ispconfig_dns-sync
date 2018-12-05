@@ -11,12 +11,12 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
 
-nsip="192.168.1.1"
+this_nsip="192.168.1.1"
 shadow_master_dns=192.168.1.253
 master_dns="$shadow_master_dns; 10.10.10.1;"
 sshurl=slavens@$shadow_master_dns
 
-dsource="mysql -s -u slavens dbispconfig -e\" SELECT origin FROM dns_soa WHERE active='Y' AND xfer LIKE '%$nsip%';\""
+dsource="mysql -s -u slavens dbispconfig -e\" SELECT origin FROM dns_soa WHERE active='Y' AND xfer LIKE '%$this_nsip%';\""
 
 domain_list=$(ssh $sshurl "$dsource |sed -e 's/\.$//'")
 
