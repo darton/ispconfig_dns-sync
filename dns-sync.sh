@@ -12,9 +12,8 @@
 #  GNU General Public License for more details.
 
 nsip="192.168.1.1"
-
 shadow_master_dns=192.168.1.253
-
+master_dns="$shadow_master_dns; 10.10.10.1;"
 sshurl=slavens@$shadow_master_dns
 
 dsource="mysql -s -u slavens dbispconfig -e\" SELECT origin FROM dns_soa WHERE active='Y' AND xfer LIKE '%$nsip%';\""
@@ -41,7 +40,7 @@ new_domain_list=$(echo $domain_list |sha1sum)
             for domain in $domain_list
             do
 
-                echo "zone \"$domain\" IN { type slave; file \"slaves/$domain\"; masters { $shadow_master_dns; }; allow-transfer { trusted-servers; }; }; " >> $named_conf_dir/$slave_zones_file
+                echo "zone \"$domain\" IN { type slave; file \"slaves/$domain\"; masters { $master_dns }; allow-transfer { trusted-servers; }; }; " >> $named_conf_dir/$slave_zones_file
             done
                 echo "I am restarting the dns server."
                 systemctl restart named
