@@ -18,6 +18,8 @@ sshurl=slavens@$shadow_master_dns
 
 dsource="mysql -s -u slavens dbispconfig -e\" SELECT origin FROM dns_soa WHERE active='Y' AND xfer LIKE '%$this_nsip%';\""
 
+timeout 10 ssh $sshurl "$dsource || { echo "Can not connect to database"; exit 1; }
+
 domain_list=$(ssh $sshurl "$dsource |sed -e 's/\.$//'")
 
 named_conf_dir=/etc/named
