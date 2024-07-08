@@ -37,7 +37,7 @@ new_domain_list=$(echo $domain_list |sha1sum)
         then
         	echo "There is a new list of domains."
         	echo $domain_list > /tmp/domain_list
-        	cp /dev/null $named_conf_dir/$slave_zones_file
+        	> $named_conf_dir/$slave_zones_file
 
             for domain in $domain_list
             do
