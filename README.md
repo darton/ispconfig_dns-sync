@@ -6,6 +6,8 @@ The script is used to automatically download a list of domains from the ispconfi
 
 Create an ssh account named slavens on the server running the ispconfig panel.
 
+Create an account called slavens on the mysql server with the right to execute SELECT on the dns_soa table of the dbispconfig database.
+
 Set the IP address of the ispconfig server in the shadow_master_dns variable.
 
 In the masters variable, set the IP addresses of the master DNS servers.
