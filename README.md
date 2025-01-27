@@ -1,4 +1,7 @@
 # ispconfig dns-sync
+
+The script is used to download a list of domains from the ispconfig server database and automatically configure these domains on the slave DNS server on which the script is run.
+
 ## Setup
 
 Create an ssh account named slavens on the server running the ispconfig panel.
